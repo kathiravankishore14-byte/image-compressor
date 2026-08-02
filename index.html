@@ -49,6 +49,16 @@
               <a href="#toolWidget" data-tool="pdf" data-format="webp">WebP to PDF</a>
             </div>
           </div>
+
+          <div class="nav-item">
+            <button class="nav-trigger">Documents</button>
+            <div class="dropdown">
+              <a href="#docToolWidget" data-doctool="texttoppt">Text to PPT</a>
+              <a href="#docToolWidget" data-doctool="imagetoexcel">Image to Excel</a>
+              <a href="#docToolWidget" data-doctool="wordtoexcel">Word to Excel</a>
+              <a href="#docToolWidget" data-doctool="exceltopdf">Excel to PDF</a>
+            </div>
+          </div>
         </nav>
       </div>
     </header>
@@ -64,18 +74,32 @@
           <span class="corner tr"></span>
           <span class="corner bl"></span>
           <span class="corner br"></span>
-          <div id="toolWidget"><!-- JS injects the tool here --></div>
+          <div id="toolWidget"></div>
         </div>
 
         <p class="trust-line">No uploads · No file limits · No account needed</p>
       </section>
 
+      <section class="hero" id="documents">
+        <p class="eyebrow">DOCUMENT TOOLS</p>
+        <h1 style="font-size: 2rem;">Text, Word, Excel.<br>One place.</h1>
+        <p class="hero-sub">Pick a document tool from the header — each one processes your file locally too.</p>
+
+        <div class="tool-frame">
+          <span class="corner tl"></span>
+          <span class="corner tr"></span>
+          <span class="corner bl"></span>
+          <span class="corner br"></span>
+          <div id="docToolWidget"></div>
+        </div>
+      </section>
+
       <section class="how" id="how">
         <h2>How it works</h2>
         <ol class="steps">
-          <li><span class="step-num">01</span> Pick a tool from the menu above — e.g. Compress → Compress JPG.</li>
-          <li><span class="step-num">02</span> Choose your image — it opens straight from the header.</li>
-          <li><span class="step-num">03</span> Download the result. That's it — nothing was ever sent anywhere.</li>
+          <li><span class="step-num">01</span> Pick a tool from the menu above.</li>
+          <li><span class="step-num">02</span> Choose your file, or paste text for Text to PPT.</li>
+          <li><span class="step-num">03</span> Download the result. Nothing was ever sent anywhere.</li>
         </ol>
       </section>
 

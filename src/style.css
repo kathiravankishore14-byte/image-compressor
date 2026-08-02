@@ -432,6 +432,49 @@ input[type="file"]::file-selector-button {
   background: #256459;
 }
 
+/* ---------- Document tools ---------- */
+.doc-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0 0 10px;
+}
+
+#docToolWidget textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  resize: vertical;
+  margin-bottom: 12px;
+}
+
+.doc-action-btn {
+  padding: 10px 20px;
+  background: var(--blue);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.doc-action-btn:hover {
+  background: var(--blue-dark);
+}
+
+#docToolWidget input[type="file"] {
+  min-height: 100px;
+}
+
+#docStatus {
+  margin: 12px 0;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 640px) {
   .hero h1 { font-size: 2.2rem; }
