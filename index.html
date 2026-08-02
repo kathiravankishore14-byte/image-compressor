@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FileForge — Free Image & Document Tools</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="/" class="logo">
+          <span class="logo-mark">⌁</span> FileForge
+        </a>
+        <nav class="main-nav">
+          <div class="nav-item">
+            <button class="nav-trigger">Resize</button>
+            <div class="dropdown">
+              <a href="#toolWidget" data-tool="resize" data-format="jpg">Resize JPG</a>
+              <a href="#toolWidget" data-tool="resize" data-format="png">Resize PNG</a>
+              <a href="#toolWidget" data-tool="resize" data-format="webp">Resize WebP</a>
+            </div>
+          </div>
+
+          <div class="nav-item">
+            <button class="nav-trigger">Compress</button>
+            <div class="dropdown">
+              <a href="#toolWidget" data-tool="compress" data-format="jpg">Compress JPG</a>
+              <a href="#toolWidget" data-tool="compress" data-format="png">Compress PNG</a>
+              <a href="#toolWidget" data-tool="compress" data-format="webp">Compress WebP</a>
+            </div>
+          </div>
+
+          <div class="nav-item">
+            <button class="nav-trigger">Crop</button>
+            <div class="dropdown">
+              <a href="#toolWidget" data-tool="crop" data-format="jpg">Crop JPG</a>
+              <a href="#toolWidget" data-tool="crop" data-format="png">Crop PNG</a>
+              <a href="#toolWidget" data-tool="crop" data-format="webp">Crop WebP</a>
+            </div>
+          </div>
+
+          <div class="nav-item">
+            <button class="nav-trigger">Convert to PDF</button>
+            <div class="dropdown">
+              <a href="#toolWidget" data-tool="pdf" data-format="jpg">JPG to PDF</a>
+              <a href="#toolWidget" data-tool="pdf" data-format="png">PNG to PDF</a>
+              <a href="#toolWidget" data-tool="pdf" data-format="webp">WebP to PDF</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">04 / IMAGE COMPRESSOR</p>
+        <h1>Shrink files.<br>Not quality.</h1>
+        <p class="hero-sub">Resize, compress, crop, and convert — right in your browser. Nothing you upload ever leaves your device.</p>
+
+        <div class="tool-frame">
+          <span class="corner tl"></span>
+          <span class="corner tr"></span>
+          <span class="corner bl"></span>
+          <span class="corner br"></span>
+          <div id="toolWidget"><!-- JS injects the tool here --></div>
+        </div>
+
+        <p class="trust-line">No uploads · No file limits · No account needed</p>
+      </section>
+
+      <section class="how" id="how">
+        <h2>How it works</h2>
+        <ol class="steps">
+          <li><span class="step-num">01</span> Pick a tool from the menu above — e.g. Compress → Compress JPG.</li>
+          <li><span class="step-num">02</span> Choose your image — it opens straight from the header.</li>
+          <li><span class="step-num">03</span> Download the result. That's it — nothing was ever sent anywhere.</li>
+        </ol>
+      </section>
+
+      <section class="features" id="tools">
+        <h2>Built for how you actually work</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <span class="feature-tag">PRIVACY</span>
+            <h3>Runs on your device</h3>
+            <p>Every tool processes files locally in your browser. No server upload, no waiting, no privacy tradeoff.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-tag">SPEED</span>
+            <h3>No file size ceiling</h3>
+            <p>Since nothing uploads to a server, there's no artificial 10MB cap pushing you toward a paid plan.</p>
+          </div>
+          <div class="feature-card">
+            <span class="feature-tag">SCOPE</span>
+            <h3>Built for students &amp; teachers</h3>
+            <p>Image tools sit alongside document converters — Word, Excel, PDF, PPT — in one place.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="about">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <h4>Image Tools</h4>
+          <a href="#">Resize</a>
+          <a href="#">Compress</a>
+          <a href="#">Crop</a>
+        </div>
+        <div class="footer-col">
+          <h4>Convert</h4>
+          <a href="#">Image to PDF</a>
+          <a href="#">Image to Excel</a>
+          <a href="#">Word to Excel</a>
+        </div>
+        <div class="footer-col">
+          <h4>PDF Tools</h4>
+          <a href="#">PDF to Word</a>
+          <a href="#">PDF to PPT</a>
+          <a href="#">Excel to PDF</a>
+        </div>
+        <div class="footer-col">
+          <h4>About</h4>
+          <a href="#">Contact</a>
+          <a href="#">Privacy</a>
+        </div>
+      </div>
+      <p class="footer-bottom">© 2026 FileForge. Built for students, teachers, and professionals.</p>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,121 @@
+body {
+  font-family: system-ui, sans-serif;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+input[type="file"] {
+  display: block;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  width: 100%;
+}
+
+#status {
+  margin: 10px 0;
+  font-weight: 500;
+  color: #333;
+  min-height: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.tool-buttons {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+}
+
+.tool-buttons button {
+  padding: 10px 16px;
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.tool-buttons button:hover {
+  background: #e5e7eb;
+}
+
+.panel {
+  display: flex;
+  gap: 10px;
+  align-items: end;
+  margin-bottom: 15px;
+  padding: 15px;
+  background: #f9fafb;
+  border-radius: 8px;
+  flex-wrap: wrap;
+}
+
+.panel label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+  gap: 4px;
+}
+
+.panel input {
+  padding: 6px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  width: 100px;
+}
+
+.panel button, #cropControls button {
+  padding: 8px 16px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  height: fit-content;
+}
+
+#imageArea {
+  margin: 15px 0;
+  max-width: 100%;
+}
+
+.preview {
+  max-width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+#cropControls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+#cropControls button:last-child {
+  background: #6b7280;
+}
+
+.download-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #16a34a;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.download-btn:hover {
+  background: #15803d;
+}
