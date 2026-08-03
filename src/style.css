@@ -21,9 +21,26 @@
 body {
   margin: 0;
   font-family: var(--font-body);
-  background: var(--paper);
   color: var(--text);
   line-height: 1.5;
+}
+
+/* ---------- Full-page fixed video background ---------- */
+.site-bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.site-bg-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 15, 24, 0.45);
+  z-index: -1;
 }
 
 .site-header {
@@ -124,23 +141,12 @@ body {
   .main-nav { display: none; }
 }
 
+/* ---------- Hero content (transparent, sits over the fixed video) ---------- */
 .hero {
-  max-width: 100%;
-  margin: 0;
-  padding: 100px 24px 140px;
-  text-align: center;
-  background-image:
-    linear-gradient(to bottom, rgba(11, 15, 24, 0.35) 0%, rgba(11, 15, 24, 0.65) 60%, var(--paper) 100%),
-    url('/images/hero-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-
-.hero > * {
   max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+  padding: 100px 24px 60px;
+  text-align: center;
 }
 
 .eyebrow {
@@ -169,10 +175,9 @@ body {
 
 .tool-frame {
   position: relative;
-  background: var(--paper-raised);
+  background: transparent;
   border-radius: 10px;
   padding: 32px;
-  box-shadow: 0 1px 3px rgba(27, 36, 48, 0.08);
 }
 
 .corner {
@@ -195,6 +200,7 @@ body {
   margin-top: 20px;
 }
 
+/* ---------- How it works / Features (transparent, over the video) ---------- */
 .how {
   max-width: 620px;
   margin: 0 auto;
@@ -205,6 +211,7 @@ body {
   font-family: var(--font-display);
   font-size: 1.4rem;
   margin-bottom: 20px;
+  color: #fff;
 }
 
 .steps {
@@ -220,7 +227,7 @@ body {
   display: flex;
   align-items: baseline;
   gap: 12px;
-  color: var(--text-muted);
+  color: #D7DAE0;
 }
 
 .step-num {
@@ -241,6 +248,7 @@ body {
   font-size: 1.6rem;
   text-align: center;
   margin-bottom: 32px;
+  color: #fff;
 }
 
 .feature-grid {
@@ -250,27 +258,28 @@ body {
 }
 
 .feature-card {
-  background: var(--paper-raised);
+  background: transparent;
   border-radius: 10px;
   padding: 24px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .feature-tag {
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.06em;
-  color: var(--teal);
+  color: #7FE0C9;
 }
 
 .feature-card h3 {
   font-family: var(--font-display);
   font-size: 1.1rem;
   margin: 10px 0 8px;
+  color: #fff;
 }
 
 .feature-card p {
-  color: var(--text-muted);
+  color: #D7DAE0;
   font-size: 0.92rem;
   margin: 0;
 }
@@ -280,6 +289,7 @@ body {
   color: #C9CDD3;
   margin-top: 60px;
   padding: 50px 24px 24px;
+  position: relative;
 }
 
 .footer-inner {
@@ -320,6 +330,7 @@ body {
   margin: 0 auto;
 }
 
+/* ---------- Drop zone (stays solid) ---------- */
 .drop-zone {
   position: relative;
   min-height: 240px;
@@ -363,6 +374,7 @@ body {
   border: none;
 }
 
+/* ---------- Tool-processing full-page video overlay ---------- */
 .hero-overlay {
   position: fixed;
   inset: 0;
@@ -415,10 +427,11 @@ body {
   text-align: center;
 }
 
+/* ---------- Widget internals ---------- */
 #status {
   margin: 10px 0;
   font-weight: 500;
-  color: var(--text);
+  color: #fff;
   min-height: 20px;
   font-size: 0.9rem;
 }
@@ -431,7 +444,8 @@ body {
   align-items: end;
   margin-bottom: 15px;
   padding: 15px;
-  background: var(--paper);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 8px;
   flex-wrap: wrap;
   justify-content: center;
@@ -442,6 +456,7 @@ body {
   flex-direction: column;
   font-size: 0.85rem;
   gap: 4px;
+  color: #D7DAE0;
 }
 
 .panel input {
