@@ -9,7 +9,7 @@
   </head>
   <body>
     <video class="site-bg-video" autoplay muted loop playsinline>
-      <source src="/videos/hero-bg-loop.mp4" type="video/mp4" />
+      <source src="/videos/hero-bg-full.mp4" type="video/mp4" />
     </video>
     <div class="site-bg-overlay"></div>
 
@@ -20,48 +20,35 @@
         </a>
         <nav class="main-nav">
           <div class="nav-item">
-            <button class="nav-trigger">Resize</button>
+            <button class="nav-trigger">Image</button>
             <div class="dropdown">
-              <a href="#toolWidget" data-tool="resize" data-format="jpg">Resize JPG</a>
-              <a href="#toolWidget" data-tool="resize" data-format="png">Resize PNG</a>
-              <a href="#toolWidget" data-tool="resize" data-format="webp">Resize WebP</a>
+              <a href="#" data-navcat="image" data-navtool="resize">Resize</a>
+              <a href="#" data-navcat="image" data-navtool="compress">Compress</a>
+              <a href="#" data-navcat="image" data-navtool="crop">Crop</a>
+              <a href="#" data-navcat="image" data-navtool="pdf">Convert to PDF</a>
+              <a href="#" data-navcat="image" data-navtool="imagetoexcel">Image to Excel</a>
+              <a href="#" data-navcat="image" data-navtool="imagetoppt">Image to PPT</a>
             </div>
           </div>
 
           <div class="nav-item">
-            <button class="nav-trigger">Compress</button>
+            <button class="nav-trigger">Word</button>
             <div class="dropdown">
-              <a href="#toolWidget" data-tool="compress" data-format="jpg">Compress JPG</a>
-              <a href="#toolWidget" data-tool="compress" data-format="png">Compress PNG</a>
-              <a href="#toolWidget" data-tool="compress" data-format="webp">Compress WebP</a>
+              <a href="#" data-navcat="word" data-navtool="wordtoexcel">Word to Excel</a>
             </div>
           </div>
 
           <div class="nav-item">
-            <button class="nav-trigger">Crop</button>
+            <button class="nav-trigger">Excel</button>
             <div class="dropdown">
-              <a href="#toolWidget" data-tool="crop" data-format="jpg">Crop JPG</a>
-              <a href="#toolWidget" data-tool="crop" data-format="png">Crop PNG</a>
-              <a href="#toolWidget" data-tool="crop" data-format="webp">Crop WebP</a>
+              <a href="#" data-navcat="excel" data-navtool="exceltopdf">Excel to PDF</a>
             </div>
           </div>
 
           <div class="nav-item">
-            <button class="nav-trigger">Convert to PDF</button>
+            <button class="nav-trigger">Text</button>
             <div class="dropdown">
-              <a href="#toolWidget" data-tool="pdf" data-format="jpg">JPG to PDF</a>
-              <a href="#toolWidget" data-tool="pdf" data-format="png">PNG to PDF</a>
-              <a href="#toolWidget" data-tool="pdf" data-format="webp">WebP to PDF</a>
-            </div>
-          </div>
-
-          <div class="nav-item">
-            <button class="nav-trigger">Documents</button>
-            <div class="dropdown">
-              <a href="#toolWidget" data-doctool="texttoppt">Text to PPT</a>
-              <a href="#toolWidget" data-doctool="imagetoexcel">Image to Excel</a>
-              <a href="#toolWidget" data-doctool="wordtoexcel">Word to Excel</a>
-              <a href="#toolWidget" data-doctool="exceltopdf">Excel to PDF</a>
+              <a href="#" data-navcat="text" data-navtool="texttoppt">Text to PPT</a>
             </div>
           </div>
         </nav>
@@ -69,27 +56,42 @@
     </header>
 
     <main>
-      <section class="hero">
-        <p class="eyebrow" id="toolEyebrow">01 / CHOOSE A TOOL ABOVE</p>
+      <!-- SCREEN 1: Landing -->
+      <section class="screen" id="screenLanding">
+        <p class="eyebrow">01 / GET STARTED</p>
         <h1>One box.<br>Every tool.</h1>
-        <p class="hero-sub">Pick a tool from the header, then drop your file below. Everything runs right in your browser — nothing ever leaves your device.</p>
+        <p class="hero-sub">Drop a file to jump right in, or hit Get Started to browse tools first. Everything runs in your browser — nothing ever leaves your device.</p>
 
-        <div class="tool-frame">
-          <span class="corner tl"></span>
-          <span class="corner tr"></span>
-          <span class="corner bl"></span>
-          <span class="corner br"></span>
-          <div id="toolWidget"></div>
+        <div class="drop-zone" id="landingDropZone">
+          <input type="file" id="landingFileInput" accept="*/*" />
+          <p class="drop-text">Drag your files here, or click to browse</p>
         </div>
 
+        <button class="get-started-btn" id="getStartedBtn">Get Started</button>
+
         <p class="trust-line">No uploads · No file limits · No account needed</p>
+      </section>
+
+      <!-- SCREEN 2: Category / Tool selection -->
+      <section class="screen hidden" id="screenTools">
+        <div id="screenToolsContent"></div>
+      </section>
+
+      <!-- SCREEN 3: Configuration -->
+      <section class="screen hidden" id="screenConfig">
+        <div id="screenConfigContent"></div>
+      </section>
+
+      <!-- SCREEN 4: Processing + Result (full-viewport when active) -->
+      <section class="screen hidden screen-fullscreen" id="screenResult">
+        <div id="screenResultContent"></div>
       </section>
 
       <section class="how" id="how">
         <h2>How it works</h2>
         <ol class="steps">
-          <li><span class="step-num">01</span> Pick a tool from the menu above.</li>
-          <li><span class="step-num">02</span> Drop your file into the box (or paste text for Text to PPT).</li>
+          <li><span class="step-num">01</span> Drop a file or hit Get Started.</li>
+          <li><span class="step-num">02</span> Pick a tool from the filtered list.</li>
           <li><span class="step-num">03</span> Download the result. Nothing was ever sent anywhere.</li>
         </ol>
       </section>
@@ -128,13 +130,13 @@
           <h4>Convert</h4>
           <a href="#">Image to PDF</a>
           <a href="#">Image to Excel</a>
-          <a href="#">Word to Excel</a>
+          <a href="#">Image to PPT</a>
         </div>
         <div class="footer-col">
-          <h4>PDF Tools</h4>
-          <a href="#">PDF to Word</a>
-          <a href="#">PDF to PPT</a>
+          <h4>Documents</h4>
+          <a href="#">Word to Excel</a>
           <a href="#">Excel to PDF</a>
+          <a href="#">Text to PPT</a>
         </div>
         <div class="footer-col">
           <h4>About</h4>
