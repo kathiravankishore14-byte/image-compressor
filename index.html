@@ -8,10 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   </head>
   <body>
-    <video class="site-bg-video" autoplay muted loop playsinline>
+    <video class="site-bg-video" id="siteBgVideo" autoplay muted loop playsinline>
       <source src="/videos/hero-bg-full.mp4" type="video/mp4" />
     </video>
     <div class="site-bg-overlay"></div>
+
+    <video id="stageBgVideo" class="stage-bg-video hidden" playsinline></video>
+
+    <div class="step-indicator" id="stepIndicator"></div>
 
     <header class="site-header">
       <div class="header-inner">
@@ -60,7 +64,6 @@
       <section class="screen" id="screenLanding">
         <p class="eyebrow">01 / GET STARTED</p>
         <h1>One box.<br>Every tool.</h1>
-        <p class="hero-sub">Drop a file to jump right in, or hit Get Started to browse tools first. Everything runs in your browser — nothing ever leaves your device.</p>
 
         <div class="drop-zone" id="landingDropZone">
           <input type="file" id="landingFileInput" accept="*/*" />
@@ -82,9 +85,14 @@
         <div id="screenConfigContent"></div>
       </section>
 
-      <!-- SCREEN 4: Processing + Result (full-viewport when active) -->
+      <!-- SCREEN 4: Processing + Result (full-viewport video background) -->
       <section class="screen hidden screen-fullscreen" id="screenResult">
-        <div id="screenResultContent"></div>
+        <video id="resultVideo" class="result-bg-video" src="/hero-video/hero-process-sound.mp4" playsinline></video>
+        <button class="mute-toggle" id="muteToggle" title="Mute">🔊</button>
+        <button class="close-btn" id="closeToResult" title="Start over">✕</button>
+        <div class="result-scrim">
+          <div id="screenResultContent"></div>
+        </div>
       </section>
 
       <section class="how" id="how">

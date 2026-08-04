@@ -45,9 +45,53 @@ function detectCategory(file) {
 }
 
 // ================= SCREEN NAV =================
+const stepMap = { screenLanding: 1, screenTools: 2, screenConfig: 3, screenResult: 4 };
+
+const stageVideoSrc = {
+  screenTools: '/videos/screen2-video.mp4',
+  screenConfig: '/videos/screen3-video.mp4',
+};
+
+const stageBgVideo = document.querySelector('#stageBgVideo');
+const siteBgVideo = document.querySelector('#siteBgVideo');
+
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach((s) => s.classList.add('hidden'));
   document.getElementById(id).classList.remove('hidden');
+  document.querySelector('#stepIndicator').textContent = `Step ${stepMap[id]} of 4`;
+
+  stageBgVideo.pause();
+  stageBgVideo.classList.add('hidden');
+
+  if (id === 'screenLanding') {
+    siteBgVideo.classList.remove('hidden');
+    siteBgVideo.play().catch(() => {});
+  } else {
+    siteBgVideo.classList.add('hidden');
+    siteBgVideo.pause();
+  }
+
+  if (stageVideoSrc[id]) {
+    const contentEl = id === 'screenTools'
+      ? document.querySelector('#screenToolsContent')
+      : document.querySelector('#screenConfigContent');
+
+    contentEl.classList.add('hidden');
+    contentEl.classList.remove('reveal-fade');
+    stageBgVideo.classList.remove('hidden');
+    stageBgVideo.src = stageVideoSrc[id];
+    stageBgVideo.currentTime = 0;
+    stageBgVideo.muted = false;
+    stageBgVideo.play().catch(() => { stageBgVideo.muted = true; stageBgVideo.play(); });
+
+    const onEnded = () => {
+      stageBgVideo.removeEventListener('ended', onEnded);
+      contentEl.classList.remove('hidden');
+      contentEl.classList.add('reveal-fade');
+    };
+    stageBgVideo.addEventListener('ended', onEnded);
+  }
+
   if (id !== 'screenResult') {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
@@ -441,26 +485,37 @@ async function excelToPdfBlob(file) {
   return pdf.output('blob');
 }
 
-// ================= SCREEN 4: Processing + Result (full viewport) =================
-const screenResultContent = document.querySelector('#screenResultContent');
+// ================= SCREEN 4: Processing + Result (full-screen video bg) =================
+const resultVideo = document.querySelector('#resultVideo');
+const muteToggle = document.querySelector('#muteToggle');
+const closeToResult = document.querySelector('#closeToResult');
+
+muteToggle.addEventListener('click', () => {
+  resultVideo.muted = !resultVideo.muted;
+  muteToggle.textContent = resultVideo.muted ? '🔇' : '🔊';
+});
+
+closeToResult.addEventListener('click', resetToLanding);
 
 function startProcessingScreen() {
   showScreen('screenResult');
-  screenResultContent.innerHTML = `
-    <video id="resultVideo" class="hero-video-full" src="/hero-video/hero-process-sound.mp4" playsinline></video>
-    <div id="resultBelow" class="hidden"></div>
-  `;
-  const video = document.querySelector('#resultVideo');
-  video.muted = false;
-  video.play().catch(() => { video.muted = true; video.play(); });
+  document.querySelector('#screenResultContent').innerHTML = '';
+  document.querySelector('.result-scrim').classList.remove('visible');
+  resultVideo.currentTime = 0;
+  resultVideo.loop = false;
+  resultVideo.muted = false;
+  muteToggle.textContent = '🔊';
+  resultVideo.play().catch(() => {
+    resultVideo.muted = true;
+    muteToggle.textContent = '🔇';
+    resultVideo.play();
+  });
 }
 
 function runVideoOnly() {
   return new Promise((resolve) => {
-    const video = document.querySelector('#resultVideo');
-    if (!video) { resolve(); return; }
-    const onEnded = () => { video.removeEventListener('ended', onEnded); resolve(); };
-    video.addEventListener('ended', onEnded);
+    const onEnded = () => { resultVideo.removeEventListener('ended', onEnded); resolve(); };
+    resultVideo.addEventListener('ended', onEnded);
   });
 }
 
@@ -471,12 +526,12 @@ function finishAndShowResult(toolKey, blob, filename) {
   }
 
   const url = URL.createObjectURL(blob);
-  const belowArea = document.querySelector('#resultBelow');
-  belowArea.classList.remove('hidden');
-  belowArea.innerHTML = `
+  const content = document.querySelector('#screenResultContent');
+  content.innerHTML = `
     <a href="${url}" download="${filename}" class="download-btn">Download ${filename}</a>
     <div id="furtherOptionsArea"></div>
   `;
+  document.querySelector('.result-scrim').classList.add('visible');
 
   renderFurtherOptions();
 }
@@ -551,6 +606,7 @@ function resetToLanding() {
   currentFile = null;
   fileCategory = null;
   usedTools = new Set();
+  resultVideo.pause();
   showScreen('screenLanding');
 }
 
